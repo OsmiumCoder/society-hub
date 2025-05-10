@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Concerns\HasUuids;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 class University extends Model
@@ -29,8 +30,21 @@ class University extends Model
         'is_featured',
     ];
 
-    protected $casts = [
-        'is_active' => 'boolean',
-        'is_featured' => 'boolean',
-    ];
+    /**
+     * Get the attributes that should be cast.
+     *
+     * @return array<string, string>
+     */
+    protected function casts(): array
+    {
+        return [
+            'is_active' => 'boolean',
+            'is_featured' => 'boolean',
+        ];
+    }
+
+    public function societies(): HasMany
+    {
+        return $this->hasMany(Society::class);
+    }
 }
