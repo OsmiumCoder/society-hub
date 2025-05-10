@@ -15,7 +15,7 @@ class UniversityPolicy
      */
     public function viewAny(User $user): bool
     {
-        return $user->isSiteAdmin();
+        return true;
     }
 
     /**
@@ -23,7 +23,7 @@ class UniversityPolicy
      */
     public function view(User $user, University $university): bool
     {
-        return $user->isSiteAdmin();
+        return true;
     }
 
     /**
