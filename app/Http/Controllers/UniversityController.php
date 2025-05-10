@@ -41,12 +41,9 @@ class UniversityController extends Controller
 
     /**
      * Store a newly created resource in storage.
-     * @throws AuthorizationException
      */
     public function store(StoreUniversityRequest $request): RedirectResponse
     {
-        $this->authorize('create', University::class);
-
         University::create($request->validated());
 
         return redirect()->route('universities.index')
@@ -85,12 +82,9 @@ class UniversityController extends Controller
 
     /**
      * Update the specified resource in storage.
-     * @throws AuthorizationException
      */
     public function update(UpdateUniversityRequest $request, University $university): RedirectResponse
     {
-        $this->authorize('update', $university);
-
         $university->update($request->validated());
 
         return redirect()->route('universities.index')
