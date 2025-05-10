@@ -15,6 +15,7 @@ class UniversitySeeder extends Seeder
     {
         University::factory()
             ->count(20)
+            ->hasSocieties(10)
             ->create();
     }
 }
