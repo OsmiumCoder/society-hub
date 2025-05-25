@@ -20,7 +20,7 @@ class UniversityController extends Controller
     {
         $this->authorize('viewAny', University::class);
 
-        return Inertia::render('Universities/Index', [
+        return Inertia::render('universities/Index', [
             'universities' => University::paginate(10),
             'can' => [
                 'create' => auth()->user()->can('create', University::class),
@@ -36,7 +36,7 @@ class UniversityController extends Controller
     {
         $this->authorize('create', University::class);
 
-        return Inertia::render('Universities/Create');
+        return Inertia::render('universities/Create');
     }
 
     /**
@@ -58,7 +58,7 @@ class UniversityController extends Controller
     {
         $this->authorize('view', $university);
 
-        return Inertia::render('Universities/Show', [
+        return Inertia::render('universities/Show', [
             'university' => $university,
             'can' => [
                 'update' => auth()->user()->can('update', $university),
@@ -75,7 +75,7 @@ class UniversityController extends Controller
     {
         $this->authorize('update', $university);
 
-        return Inertia::render('Universities/Edit', [
+        return Inertia::render('universities/Edit', [
             'university' => $university,
         ]);
     }

@@ -24,7 +24,7 @@ class UniversitySocietyController extends Controller
         $societies = $university->societies()
             ->paginate(10);
 
-        return Inertia::render('Universities/Societies/Index', [
+        return Inertia::render('societies/Index', [
             'university' => $university,
             'societies' => $societies,
         ]);
@@ -38,7 +38,7 @@ class UniversitySocietyController extends Controller
     {
         $this->authorize('create', [Society::class, $university]);
 
-        return Inertia::render('Universities/Societies/Create', [
+        return Inertia::render('societies/Create', [
             'university' => $university,
         ]);
     }
@@ -64,7 +64,7 @@ class UniversitySocietyController extends Controller
     {
         $this->authorize('view', $society);
 
-        return Inertia::render('Universities/Societies/Show', [
+        return Inertia::render('societies/Show', [
             'university' => $university,
             'society' => $society->load('members'),
         ]);
@@ -78,7 +78,7 @@ class UniversitySocietyController extends Controller
     {
         $this->authorize('update', $society);
 
-        return Inertia::render('Universities/Societies/Edit', [
+        return Inertia::render('societies/Edit', [
             'university' => $university,
             'society' => $society,
         ]);
