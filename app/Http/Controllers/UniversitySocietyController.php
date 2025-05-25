@@ -6,9 +6,9 @@ use App\Http\Requests\StoreSocietyRequest;
 use App\Http\Requests\UpdateSocietyRequest;
 use App\Models\Society;
 use App\Models\University;
+use App\SocietyMemberRole;
 use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Http\RedirectResponse;
-use Illuminate\Http\Request;
 use Inertia\Inertia;
 use Inertia\Response;
 
@@ -50,7 +50,7 @@ class UniversitySocietyController extends Controller
     {
         $society = $university->societies()->create($request->validated());
 
-        $society->members()->attach(auth()->id(), ['role' => 'owner']);
+        $society->members()->attach(auth()->id(), ['role' => SocietyMemberRole::OWNER]);
 
         return redirect()->route('universities.societies.show', [$university, $society])
             ->with('success', 'Society created successfully.');

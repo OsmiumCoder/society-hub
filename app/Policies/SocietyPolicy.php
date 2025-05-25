@@ -4,6 +4,7 @@ namespace App\Policies;
 
 use App\Models\Society;
 use App\Models\User;
+use App\SocietyMemberRole;
 use Illuminate\Auth\Access\Response;
 
 class SocietyPolicy
@@ -37,8 +38,10 @@ class SocietyPolicy
      */
     public function update(User $user, Society $society): bool
     {
-        // Use the society's method to check roles
-        return $society->userHasRole($user, ['admin', 'owner']);
+        return $society->userHasRole($user, [
+            SocietyMemberRole::ADMIN,
+            SocietyMemberRole::OWNER
+        ]);
     }
 
     /**
@@ -46,7 +49,7 @@ class SocietyPolicy
      */
     public function delete(User $user, Society $society): bool
     {
-        return $society->userHasRole($user, 'owner');
+        return $society->userHasRole($user, SocietyMemberRole::OWNER);
     }
 
     /**
@@ -54,7 +57,7 @@ class SocietyPolicy
      */
     public function restore(User $user, Society $society): bool
     {
-        return $society->userHasRole($user, 'owner');
+        return $society->userHasRole($user, SocietyMemberRole::OWNER);
     }
 
     /**

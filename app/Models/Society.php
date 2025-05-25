@@ -34,7 +34,8 @@ class Society extends Model
 
     public function members()
     {
-        // TODO: Many to Many with User
+        return $this->belongsToMany(User::class, 'society_members', 'society_id', 'user_id')
+            ->using(SocietyMember::class);
     }
 
     public function userHasRole(User $user, $roles): bool

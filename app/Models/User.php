@@ -54,6 +54,7 @@ class User extends Authenticatable
 
     public function societies()
     {
-        // TODO: Many to Many with Society
+        return $this->belongsToMany(Society::class, 'society_members', 'user_id', 'society_id')
+            ->using(SocietyMember::class);
     }
 }
