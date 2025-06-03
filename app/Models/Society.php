@@ -10,7 +10,6 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Society extends Model
 {
-    /** @use HasFactory<\Database\Factories\SocietyFactory> */
     use HasFactory;
     use HasUuids;
     use SoftDeletes;
@@ -23,6 +22,7 @@ class Society extends Model
     protected function casts(): array
     {
         return [
+            'founding_date' => 'date:Y-m-d',
             'tags' => 'array',
         ];
     }

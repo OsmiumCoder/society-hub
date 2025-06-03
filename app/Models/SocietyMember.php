@@ -14,7 +14,6 @@ class SocietyMember extends Pivot
     {
         return [
             'role' => SocietyMemberRole::class,
-            ''
         ];
     }
 }

@@ -10,7 +10,6 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 class University extends Model
 {
-    /** @use HasFactory<\Database\Factories\UniversityFactory> */
     use HasFactory;
     use HasUuids;
     use SoftDeletes;
