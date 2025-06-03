@@ -34,7 +34,7 @@ class Society extends Model
 
     public function members()
     {
-        return $this->belongsToMany(User::class, 'society_members', 'society_id', 'user_id')
+        return $this->belongsToMany(User::class, 'society_member', 'society_id', 'user_id')
             ->using(SocietyMember::class);
     }
 
