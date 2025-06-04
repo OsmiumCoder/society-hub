@@ -2,8 +2,13 @@
 import { Head, Link } from '@inertiajs/vue3';
 import AppLayout from '@/layouts/AppLayout.vue';
 import PlaceholderPattern from '@/components/PlaceholderPattern.vue';
-import { BreadcrumbItem, Society, University } from '@/types';
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
+import { BreadcrumbItem, type NavItem, Society, University } from '@/types';
+import {
+    NavigationMenu,
+    NavigationMenuItem,
+    NavigationMenuLink,
+    NavigationMenuList,
+} from '@/components/ui/navigation-menu';
 
 interface Props {
     university: University;
@@ -12,6 +17,41 @@ interface Props {
 }
 
 const props = defineProps<Props>();
+
+const navItems: NavItem[] = [
+    {
+        title: 'Home',
+        href: route('universities.societies.show', {university: props.university.id, society: props.society.id}),
+        isActive: route().current('universities.societies.show', {university: props.university.id, society: props.society.id})
+    },
+    {
+        title: 'About',
+        href: '',
+        isActive: false
+    },
+    {
+        title: 'Events',
+        href: '',
+        isActive: false
+    },
+    {
+        title: 'Store',
+        href: '',
+        isActive: false
+    },
+    {
+        title: 'Members',
+        href: '',
+        isActive: false,
+        can: false
+    },
+    {
+        title: 'Settings',
+        href: '',
+        isActive: false,
+        can: false
+    },
+];
 
 const breadcrumbs: BreadcrumbItem[] = [
     {
@@ -38,7 +78,7 @@ const breadcrumbs: BreadcrumbItem[] = [
 </script>
 
 <template>
-    <Head :title="university.name" />
+    <Head :title="society.name" />
 
     <AppLayout :breadcrumbs="breadcrumbs">
         <div class="flex h-full flex-1 flex-col gap-4 rounded-xl p-4">
@@ -56,6 +96,25 @@ const breadcrumbs: BreadcrumbItem[] = [
                     <p class="text-xl max-w-2xl">{{ society.category }}</p>
                 </div>
             </div>
+
+            <div class="flex justify-center">
+                <NavigationMenu>
+                    <NavigationMenuList>
+                        <NavigationMenuItem v-for="(item, index) in navItems" :key="index" class="relative flex h-full items-center">
+                            <Link :href="item.href">
+                                <NavigationMenuLink>
+                                    {{ item.title }}
+                                </NavigationMenuLink>
+                            </Link>
+                            <div
+                                v-if="item.isActive"
+                                class="absolute bottom-0 left-0 h-0.5 w-full translate-y-px bg-black dark:bg-white"
+                            ></div>
+                        </NavigationMenuItem>
+                    </NavigationMenuList>
+                </NavigationMenu>
+            </div>
+
             <div class="relative min-h-[100vh] flex-1 rounded-xl border border-sidebar-border/70 dark:border-sidebar-border md:min-h-min">
                 <PlaceholderPattern />
             </div>
