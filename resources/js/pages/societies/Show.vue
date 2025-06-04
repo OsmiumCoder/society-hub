@@ -22,22 +22,26 @@ const navItems: NavItem[] = [
     {
         title: 'Home',
         href: route('universities.societies.show', {university: props.university.id, society: props.society.id}),
-        isActive: route().current('universities.societies.show', {university: props.university.id, society: props.society.id})
+        isActive: route().current('universities.societies.show', {university: props.university.id, society: props.society.id}),
+        can: true
     },
     {
         title: 'About',
         href: '',
-        isActive: false
+        isActive: false,
+        can: true
     },
     {
         title: 'Events',
         href: '',
-        isActive: false
+        isActive: false,
+        can: true
     },
     {
         title: 'Store',
         href: '',
-        isActive: false
+        isActive: false,
+        can: true
     },
     {
         title: 'Members',
@@ -100,17 +104,19 @@ const breadcrumbs: BreadcrumbItem[] = [
             <div class="flex justify-center">
                 <NavigationMenu>
                     <NavigationMenuList>
-                        <NavigationMenuItem v-for="(item, index) in navItems" :key="index" class="relative flex h-full items-center">
-                            <Link :href="item.href">
-                                <NavigationMenuLink>
-                                    {{ item.title }}
-                                </NavigationMenuLink>
-                            </Link>
-                            <div
-                                v-if="item.isActive"
-                                class="absolute bottom-0 left-0 h-0.5 w-full translate-y-px bg-black dark:bg-white"
-                            ></div>
-                        </NavigationMenuItem>
+                        <template v-for="(item, index) in navItems">
+                            <NavigationMenuItem v-if="item.can" :key="index" class="relative flex h-full items-center">
+                                <Link :href="item.href">
+                                    <NavigationMenuLink>
+                                        {{ item.title }}
+                                    </NavigationMenuLink>
+                                </Link>
+                                <div
+                                    v-if="item.isActive"
+                                    class="absolute bottom-0 left-0 h-0.5 w-full translate-y-px bg-black dark:bg-white"
+                                ></div>
+                            </NavigationMenuItem>
+                        </template>
                     </NavigationMenuList>
                 </NavigationMenu>
             </div>
