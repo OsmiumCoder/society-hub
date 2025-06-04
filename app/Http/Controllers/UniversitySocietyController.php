@@ -68,7 +68,7 @@ class UniversitySocietyController extends Controller
 
         return Inertia::render('societies/Show', [
             'university' => $university,
-            'society' => $society->load('members'),
+            'society' => $society,
         ]);
     }
 
