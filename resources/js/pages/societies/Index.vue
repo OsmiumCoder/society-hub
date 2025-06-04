@@ -46,7 +46,7 @@ const breadcrumbs: BreadcrumbItem[] = [
                 >
                     <Link :href="route('universities.societies.show', { university: university.id, society: society.id })">
                         <div class="relative overflow-hidden">
-                            <div class="">
+                            <div>
                                 <img src="https://placehold.co/600x400" :alt="society.name" class="mb-[-12%] rounded-xl shadow-2xl ring-1 ring-white/10" width="2432" height="1442" />
                                 <div class="relative" aria-hidden="true">
                                     <div class="absolute -inset-x-20 bottom-0 bg-linear-to-t from-white pt-[20%]" />
