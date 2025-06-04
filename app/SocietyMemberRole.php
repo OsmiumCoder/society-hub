@@ -10,7 +10,7 @@ enum SocietyMemberRole: int
 
     public function label(): string
     {
-        return match($this) {
+        return match ($this) {
             self::MEMBER => 'Member',
             self::ADMIN => 'Admin',
             self::OWNER => 'Owner',
@@ -22,7 +22,7 @@ enum SocietyMemberRole: int
         return array_map(function ($case) {
             return [
                 'name' => $case->label(),
-                'value' => $case->value
+                'value' => $case->value,
             ];
         }, self::cases());
     }

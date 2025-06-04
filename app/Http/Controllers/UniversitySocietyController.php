@@ -32,6 +32,7 @@ class UniversitySocietyController extends Controller
 
     /**
      * Show the form for creating a new resource.
+     *
      * @throws AuthorizationException
      */
     public function create(University $university): Response
@@ -58,6 +59,7 @@ class UniversitySocietyController extends Controller
 
     /**
      * Display the specified resource.
+     *
      * @throws AuthorizationException
      */
     public function show(University $university, Society $society): Response
@@ -72,6 +74,7 @@ class UniversitySocietyController extends Controller
 
     /**
      * Show the form for editing the specified resource.
+     *
      * @throws AuthorizationException
      */
     public function edit(University $university, Society $society): Response
@@ -97,6 +100,7 @@ class UniversitySocietyController extends Controller
 
     /**
      * Remove the specified resource from storage.
+     *
      * @throws AuthorizationException
      */
     public function destroy(University $university, Society $society): RedirectResponse

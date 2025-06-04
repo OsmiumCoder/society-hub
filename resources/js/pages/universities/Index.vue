@@ -37,13 +37,19 @@ const breadcrumbs: BreadcrumbItem[] = [
                     <Link :href="route('universities.show', { university: university.id })">
                         <div class="relative overflow-hidden">
                             <div class="">
-                                <img src="https://placehold.co/600x400" :alt="university.name" class="mb-[-12%] rounded-xl shadow-2xl ring-1 ring-white/10" width="2432" height="1442" />
+                                <img
+                                    src="https://placehold.co/600x400"
+                                    :alt="university.name"
+                                    class="mb-[-12%] rounded-xl shadow-2xl ring-1 ring-white/10"
+                                    width="2432"
+                                    height="1442"
+                                />
                                 <div class="relative" aria-hidden="true">
                                     <div class="absolute -inset-x-20 bottom-0 bg-linear-to-t from-white pt-[20%]" />
                                 </div>
                             </div>
                         </div>
-                        <Card class="h-full border-t-0 rounded-t-none">
+                        <Card class="h-full rounded-t-none border-t-0">
                             <CardHeader>
                                 <CardTitle>{{ university.name }}</CardTitle>
                                 <CardDescription>{{ university.city }}, {{ university.state }}, {{ university.country }}</CardDescription>

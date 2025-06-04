@@ -14,6 +14,7 @@ class UniversityController extends Controller
 {
     /**
      * Display a listing of the resource.
+     *
      * @throws AuthorizationException
      */
     public function index(): Response
@@ -24,12 +25,13 @@ class UniversityController extends Controller
             'universities' => University::paginate(10),
             'can' => [
                 'create' => auth()->user()->can('create', University::class),
-            ]
+            ],
         ]);
     }
 
     /**
      * Show the form for creating a new resource.
+     *
      * @throws AuthorizationException
      */
     public function create(): Response
@@ -52,6 +54,7 @@ class UniversityController extends Controller
 
     /**
      * Display the specified resource.
+     *
      * @throws AuthorizationException
      */
     public function show(University $university): Response
@@ -63,12 +66,13 @@ class UniversityController extends Controller
             'can' => [
                 'update' => auth()->user()->can('update', $university),
                 'delete' => auth()->user()->can('delete', $university),
-            ]
+            ],
         ]);
     }
 
     /**
      * Show the form for editing the specified resource.
+     *
      * @throws AuthorizationException
      */
     public function edit(University $university): Response
@@ -93,6 +97,7 @@ class UniversityController extends Controller
 
     /**
      * Remove the specified resource from storage.
+     *
      * @throws AuthorizationException
      */
     public function destroy(University $university): RedirectResponse

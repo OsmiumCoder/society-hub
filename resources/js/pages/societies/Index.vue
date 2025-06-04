@@ -1,12 +1,12 @@
 <script setup lang="ts">
-import { Head, Link } from '@inertiajs/vue3';
+import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import AppLayout from '@/layouts/AppLayout.vue';
 import { BreadcrumbItem, Pagination, Society, University } from '@/types';
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
+import { Head, Link } from '@inertiajs/vue3';
 
 interface Props {
     university: University;
-    societies: Pagination<Society>
+    societies: Pagination<Society>;
     can: object;
 }
 
@@ -23,11 +23,11 @@ const breadcrumbs: BreadcrumbItem[] = [
     },
     {
         title: props.university.name,
-        href: route('universities.show', {university: props.university.id}),
+        href: route('universities.show', { university: props.university.id }),
     },
     {
         title: 'Societies',
-        href: route('universities.societies.index', {university: props.university.id}),
+        href: route('universities.societies.index', { university: props.university.id }),
     },
 ];
 </script>
@@ -46,13 +46,19 @@ const breadcrumbs: BreadcrumbItem[] = [
                     <Link :href="route('universities.societies.show', { university: university.id, society: society.id })">
                         <div class="relative overflow-hidden">
                             <div>
-                                <img src="https://placehold.co/600x400" :alt="society.name" class="mb-[-12%] rounded-xl shadow-2xl ring-1 ring-white/10" width="2432" height="1442" />
+                                <img
+                                    src="https://placehold.co/600x400"
+                                    :alt="society.name"
+                                    class="mb-[-12%] rounded-xl shadow-2xl ring-1 ring-white/10"
+                                    width="2432"
+                                    height="1442"
+                                />
                                 <div class="relative" aria-hidden="true">
                                     <div class="absolute -inset-x-20 bottom-0 bg-linear-to-t from-white pt-[20%]" />
                                 </div>
                             </div>
                         </div>
-                        <Card class="h-full border-t-0 rounded-t-none">
+                        <Card class="h-full rounded-t-none border-t-0">
                             <CardHeader>
                                 <CardTitle>{{ society.name }}</CardTitle>
                                 <CardDescription>{{ society.category }}</CardDescription>
@@ -69,6 +75,4 @@ const breadcrumbs: BreadcrumbItem[] = [
     </AppLayout>
 </template>
 
-<style scoped>
-
-</style>
+<style scoped></style>

@@ -3,7 +3,6 @@
 namespace Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
-use Str;
 
 /**
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\University>
@@ -18,7 +17,7 @@ class UniversityFactory extends Factory
     public function definition(): array
     {
         return [
-            'name' => $this->faker->unique()->company() . ' University',
+            'name' => $this->faker->unique()->company().' University',
             'description' => $this->faker->paragraph(),
             'address' => $this->faker->streetAddress(),
             'city' => $this->faker->city(),
@@ -27,7 +26,7 @@ class UniversityFactory extends Factory
             'postal_code' => $this->faker->postcode(),
             'phone' => $this->faker->phoneNumber(),
             'email' => $this->faker->unique()->companyEmail(),
-            'website' => 'https://' . $this->faker->domainName(),
+            'website' => 'https://'.$this->faker->domainName(),
             'is_active' => $this->faker->boolean(90),
             'is_featured' => $this->faker->boolean(20),
         ];

@@ -12,7 +12,7 @@ const mainNavItems: NavItem[] = [
         title: 'Dashboard',
         href: route('dashboard'),
         icon: LayoutGrid,
-        isActive: route().current('dashboard')
+        isActive: route().current('dashboard'),
     },
 ];
 </script>

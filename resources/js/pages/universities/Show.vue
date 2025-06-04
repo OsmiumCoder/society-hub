@@ -1,9 +1,9 @@
 <script setup lang="ts">
-import { Head, Link } from '@inertiajs/vue3';
-import AppLayout from '@/layouts/AppLayout.vue';
 import PlaceholderPattern from '@/components/PlaceholderPattern.vue';
-import { BreadcrumbItem, University } from '@/types';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
+import AppLayout from '@/layouts/AppLayout.vue';
+import { BreadcrumbItem, University } from '@/types';
+import { Head, Link } from '@inertiajs/vue3';
 
 interface Props {
     university: University;
@@ -23,7 +23,7 @@ const breadcrumbs: BreadcrumbItem[] = [
     },
     {
         title: props.university.name,
-        href: route('universities.show', {university: props.university.id}),
+        href: route('universities.show', { university: props.university.id }),
     },
 ];
 </script>
@@ -34,36 +34,32 @@ const breadcrumbs: BreadcrumbItem[] = [
     <AppLayout :breadcrumbs="breadcrumbs">
         <div class="flex h-full flex-1 flex-col gap-4 rounded-xl p-4">
             <div class="grid auto-rows-min gap-4 md:grid-cols-3">
-                <div class="relative aspect-video overflow-hidden rounded-xl border border-sidebar-border/70 dark:border-sidebar-border">
-                    <Link :href="route('universities.societies.index', {university: university.id})">
+                <div class="border-sidebar-border/70 dark:border-sidebar-border relative aspect-video overflow-hidden rounded-xl border">
+                    <Link :href="route('universities.societies.index', { university: university.id })">
                         <Card class="h-full">
                             <CardHeader>
                                 <CardTitle>Explore Societies</CardTitle>
                                 <CardDescription>Find your society today</CardDescription>
                             </CardHeader>
-                            <CardContent>
-                                Explore the large catalog of societies at {{ university.name }}!
-                            </CardContent>
+                            <CardContent> Explore the large catalog of societies at {{ university.name }}! </CardContent>
                             <CardFooter>
                                 <span class="font-semibold">Find your society today <span aria-hidden="true">→</span></span>
                             </CardFooter>
                         </Card>
                     </Link>
                 </div>
-                <div class="relative aspect-video overflow-hidden rounded-xl border border-sidebar-border/70 dark:border-sidebar-border">
+                <div class="border-sidebar-border/70 dark:border-sidebar-border relative aspect-video overflow-hidden rounded-xl border">
                     <PlaceholderPattern />
                 </div>
-                <div class="relative aspect-video overflow-hidden rounded-xl border border-sidebar-border/70 dark:border-sidebar-border">
+                <div class="border-sidebar-border/70 dark:border-sidebar-border relative aspect-video overflow-hidden rounded-xl border">
                     <PlaceholderPattern />
                 </div>
             </div>
-            <div class="relative min-h-[100vh] flex-1 rounded-xl border border-sidebar-border/70 dark:border-sidebar-border md:min-h-min">
+            <div class="border-sidebar-border/70 dark:border-sidebar-border relative min-h-[100vh] flex-1 rounded-xl border md:min-h-min">
                 <PlaceholderPattern />
             </div>
         </div>
     </AppLayout>
 </template>
 
-<style scoped>
-
-</style>
+<style scoped></style>

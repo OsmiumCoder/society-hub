@@ -6,7 +6,6 @@ import { Link } from '@inertiajs/vue3';
 defineProps<{
     items: NavItem[];
 }>();
-
 </script>
 
 <template>
@@ -14,10 +13,7 @@ defineProps<{
         <SidebarGroupLabel>Platform</SidebarGroupLabel>
         <SidebarMenu>
             <SidebarMenuItem v-for="item in items" :key="item.title">
-                <SidebarMenuButton
-                    as-child :is-active="item.isActive"
-                    :tooltip="item.title"
-                >
+                <SidebarMenuButton as-child :is-active="item.isActive" :tooltip="item.title">
                     <Link :href="item.href">
                         <component :is="item.icon" />
                         <span>{{ item.title }}</span>

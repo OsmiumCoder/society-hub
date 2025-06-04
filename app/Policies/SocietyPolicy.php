@@ -5,7 +5,6 @@ namespace App\Policies;
 use App\Models\Society;
 use App\Models\User;
 use App\SocietyMemberRole;
-use Illuminate\Auth\Access\Response;
 
 class SocietyPolicy
 {
@@ -40,7 +39,7 @@ class SocietyPolicy
     {
         return $society->userHasRole($user, [
             SocietyMemberRole::ADMIN,
-            SocietyMemberRole::OWNER
+            SocietyMemberRole::OWNER,
         ]);
     }
 
