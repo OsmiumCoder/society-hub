@@ -5,7 +5,7 @@ namespace App\Policies;
 use App\Models\University;
 use App\Models\User;
 
-class UniversityPolicy
+class UniversityPolicy extends BasePolicy
 {
     /**
      * Determine whether the user can view any models.

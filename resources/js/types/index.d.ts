@@ -62,6 +62,12 @@ export interface PaginationLink {
     active: boolean;
 }
 
+export interface Can {
+    create: boolean;
+    update: boolean;
+    delete: boolean
+}
+
 export interface University {
     id: string;
     name: string;

@@ -27,6 +27,9 @@ class UniversitySocietyController extends Controller
         return Inertia::render('societies/Index', [
             'university' => $university,
             'societies' => $societies,
+            'can' => [
+                'create' => auth()->user()->can('create', Society::class),
+            ],
         ]);
     }
 
@@ -69,6 +72,9 @@ class UniversitySocietyController extends Controller
         return Inertia::render('societies/Show', [
             'university' => $university,
             'society' => $society,
+            'can' => [
+                'update' => auth()->user()->can('update', $society),
+            ],
         ]);
     }
 
@@ -84,6 +90,10 @@ class UniversitySocietyController extends Controller
         return Inertia::render('societies/Edit', [
             'university' => $university,
             'society' => $society,
+            'can' => [
+                'update' => auth()->user()->can('update', $society),
+                'delete' => auth()->user()->can('delete', $society),
+            ],
         ]);
     }
 

@@ -6,7 +6,7 @@ use App\Models\Society;
 use App\Models\User;
 use App\SocietyMemberRole;
 
-class SocietyPolicy
+class SocietyPolicy extends BasePolicy
 {
     /**
      * Determine whether the user can view any models.
