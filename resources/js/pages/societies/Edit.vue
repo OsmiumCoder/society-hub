@@ -15,9 +15,7 @@ defineProps<Props>();
 <template>
     <Head :title="society.name" />
 
-    <Layout :university="university" :society="society" :can="can">
-
-    </Layout>
+    <Layout :university="university" :society="society" :can="can"> </Layout>
 </template>
 
 <style scoped></style>

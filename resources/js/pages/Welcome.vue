@@ -127,7 +127,8 @@ const secondaryFeatures = [
                             Run Your University Society Like a Pro
                         </h1>
                         <p class="mt-8 text-lg font-medium text-pretty text-gray-400 sm:text-xl/8">
-                            Manage members, plan events, track sign-ups, and grow your society—all from one intuitive platform. Built for student leaders who want to make an impact.
+                            Manage members, plan events, track sign-ups, and grow your society—all from one intuitive platform. Built for student
+                            leaders who want to make an impact.
                         </p>
                         <div class="mt-10 flex items-center gap-x-6">
                             <Link

@@ -1,15 +1,9 @@
 <script setup lang="ts">
-
-import {
-    NavigationMenu,
-    NavigationMenuItem,
-    NavigationMenuLink,
-    NavigationMenuList
-} from '@/components/ui/navigation-menu';
-import AppLayout from '@/layouts/AppLayout.vue';
-import { Head, Link } from '@inertiajs/vue3';
 import PlaceholderPattern from '@/components/PlaceholderPattern.vue';
+import { NavigationMenu, NavigationMenuItem, NavigationMenuLink, NavigationMenuList } from '@/components/ui/navigation-menu';
+import AppLayout from '@/layouts/AppLayout.vue';
 import { BreadcrumbItem, Can, type NavItem, Society, University } from '@/types';
+import { Head, Link } from '@inertiajs/vue3';
 
 interface Props {
     university: University;
@@ -130,6 +124,4 @@ const breadcrumbs: BreadcrumbItem[] = [
     </AppLayout>
 </template>
 
-<style scoped>
-
-</style>
+<style scoped></style>

@@ -1,7 +1,7 @@
 <script setup lang="ts">
+import Layout from '@/layouts/societies/Layout.vue';
 import { Society, University } from '@/types';
 import { Head } from '@inertiajs/vue3';
-import Layout from '@/layouts/societies/Layout.vue';
 
 interface Props {
     university: University;
@@ -15,9 +15,7 @@ defineProps<Props>();
 <template>
     <Head :title="society.name" />
 
-    <Layout :university="university" :society="society" :can="can">
-
-    </Layout>
+    <Layout :university="university" :society="society" :can="can"> </Layout>
 </template>
 
 <style scoped></style>
