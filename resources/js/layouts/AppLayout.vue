@@ -1,11 +1,11 @@
 <script setup lang="ts">
+import { Toaster } from '@/components/ui/sonner';
 import AppLayout from '@/layouts/app/AppHeaderLayout.vue';
 import type { BreadcrumbItemType, SharedData } from '@/types';
-import { Toaster } from '@/components/ui/sonner'
-import 'vue-sonner/style.css'
-import { computed, watch } from 'vue';
-import { toast } from 'vue-sonner'
 import { usePage } from '@inertiajs/vue3';
+import { computed, watch } from 'vue';
+import { toast } from 'vue-sonner';
+import 'vue-sonner/style.css';
 
 interface Props {
     breadcrumbs?: BreadcrumbItemType[];
@@ -23,15 +23,15 @@ watch(flash, () => {
         console.log('here');
         toast('Action Successful', {
             description: flash.value.success,
-        })
+        });
     }
 
     if (flash.value.error) {
         toast('An Error Occurred', {
             description: flash.value.error,
-        })
+        });
     }
-})
+});
 </script>
 
 <template>
