@@ -2,10 +2,9 @@
 import { Toaster } from '@/components/ui/sonner';
 import AppLayout from '@/layouts/app/AppHeaderLayout.vue';
 import type { BreadcrumbItemType, SharedData } from '@/types';
-import 'vue-sonner/style.css'
-import { computed, watch } from 'vue';
-import { toast } from 'vue-sonner'
 import { usePage } from '@inertiajs/vue3';
+import { computed, watch } from 'vue';
+import { toast } from 'vue-sonner';
 import 'vue-sonner/style.css';
 
 interface Props {
@@ -23,7 +22,7 @@ watch(flash, () => {
     if (flash.value.success) {
         toast('Action Successful', {
             description: flash.value.success,
-        })
+        });
     }
 
     if (flash.value.error) {
