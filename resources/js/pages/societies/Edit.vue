@@ -11,16 +11,11 @@ import { Can, Society, University } from '@/types';
 import { Head, useForm } from '@inertiajs/vue3';
 import { LoaderCircle } from 'lucide-vue-next';
 
-import { CalendarIcon } from 'lucide-vue-next';
 import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover';
-import { ref } from 'vue';
-import {
-    DateFormatter,
-    type DateValue,
-    parseDate,
-    getLocalTimeZone,
-} from '@internationalized/date'
 import { Switch } from '@/components/ui/switch';
+import { DateFormatter, type DateValue, getLocalTimeZone, parseDate } from '@internationalized/date';
+import { CalendarIcon } from 'lucide-vue-next';
+import { ref } from 'vue';
 
 interface Props {
     university: University;
@@ -49,17 +44,16 @@ const form = useForm({
 
 const df = new DateFormatter('en-US', {
     dateStyle: 'long',
-})
+});
 
 const foundingDate = ref<DateValue>(parseDate(form.founding_date.toString()));
 
 const submit = () => {
-    form.transform(data => ({
+    form.transform((data) => ({
         ...data,
         founding_date: foundingDate.value.toDate(getLocalTimeZone()),
-    })).patch(route('universities.societies.update', {university: props.university, society: props.society}))
+    })).patch(route('universities.societies.update', { university: props.university, society: props.society }));
 };
-
 </script>
 
 <template>
@@ -126,7 +120,10 @@ const submit = () => {
                     <Label>Founding Date</Label>
                     <Popover>
                         <PopoverTrigger as-child>
-                            <Button variant="outline" :class="cn('w-full justify-start text-left font-normal', !foundingDate && 'text-muted-foreground')">
+                            <Button
+                                variant="outline"
+                                :class="cn('w-full justify-start text-left font-normal', !foundingDate && 'text-muted-foreground')"
+                            >
                                 <CalendarIcon class="mr-2 h-4 w-4" />
                                 {{ foundingDate ? df.format(foundingDate.toDate(getLocalTimeZone())) : 'Pick a date' }}
                             </Button>

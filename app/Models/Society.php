@@ -28,7 +28,7 @@ class Society extends Model
         'is_active',
         'is_official',
         'category',
-        'tags'
+        'tags',
     ];
 
     /**
