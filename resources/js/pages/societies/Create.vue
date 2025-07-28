@@ -6,16 +6,16 @@ import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Textarea } from '@/components/ui/textarea';
 import { cn } from '@/lib/utils';
-import { BreadcrumbItem, Can, Society, University } from '@/types';
+import { BreadcrumbItem, Can, University } from '@/types';
 import { Head, useForm } from '@inertiajs/vue3';
 import { LoaderCircle } from 'lucide-vue-next';
 
 import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover';
 import { Switch } from '@/components/ui/switch';
+import AppLayout from '@/layouts/AppLayout.vue';
 import { DateFormatter, type DateValue, getLocalTimeZone, today } from '@internationalized/date';
 import { CalendarIcon } from 'lucide-vue-next';
 import { Ref, ref } from 'vue';
-import AppLayout from '@/layouts/AppLayout.vue';
 
 interface Props {
     university: University;
@@ -45,7 +45,7 @@ const df = new DateFormatter('en-US', {
     dateStyle: 'long',
 });
 
-const foundingDate = ref(today(getLocalTimeZone())) as Ref<DateValue>
+const foundingDate = ref(today(getLocalTimeZone())) as Ref<DateValue>;
 
 const submit = () => {
     form.transform((data) => ({
