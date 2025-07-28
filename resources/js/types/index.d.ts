@@ -11,6 +11,11 @@ export interface BreadcrumbItem {
     href: string;
 }
 
+export interface Flash {
+    success: string;
+    error: string;
+}
+
 export interface NavItem {
     title: string;
     href: string;
@@ -21,10 +26,10 @@ export interface NavItem {
 
 export interface SharedData extends PageProps {
     name: string;
-    quote: { message: string; author: string };
     auth: Auth;
     ziggy: Config & { location: string };
     sidebarOpen: boolean;
+    flash: Flash;
 }
 
 export interface User {
