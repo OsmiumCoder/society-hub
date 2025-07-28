@@ -14,6 +14,23 @@ class Society extends Model
     use HasUuids;
     use SoftDeletes;
 
+    protected $fillable = [
+        'name',
+        'description',
+        'email',
+        'facebook_url',
+        'instagram_handle',
+        'twitter_handle',
+        'discord_url',
+        'meeting_schedule',
+        'meeting_location',
+        'founding_date',
+        'is_active',
+        'is_official',
+        'category',
+        'tags'
+    ];
+
     /**
      * Get the attributes that should be cast.
      *
@@ -23,6 +40,8 @@ class Society extends Model
     {
         return [
             'founding_date' => 'date:Y-m-d',
+            'is_active' => 'boolean',
+            'is_official' => 'boolean',
             'tags' => 'array',
         ];
     }

@@ -18,6 +18,7 @@ return new class extends Migration
             $table->foreignUuid('user_id')->references('id')->on('users');
 
             $table->integer('role');
+            $table->string('title')->nullable();
 
             $table->timestamps();
         });

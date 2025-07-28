@@ -104,7 +104,7 @@ class UniversitySocietyController extends Controller
     {
         $society->update($request->validated());
 
-        return redirect()->route('universities.societies.show', [$university, $society])
+        return redirect()->route('universities.societies.edit', [$university, $society])
             ->with('success', 'Society updated successfully.');
     }
 

@@ -1,12 +1,12 @@
 <script setup lang="ts">
 import Layout from '@/layouts/societies/Layout.vue';
-import { Society, University } from '@/types';
+import { Can, Society, University } from '@/types';
 import { Head } from '@inertiajs/vue3';
 
 interface Props {
     university: University;
     society: Society;
-    can: object;
+    can: Can;
 }
 
 defineProps<Props>();
