@@ -68,6 +68,10 @@ const breadcrumbs: BreadcrumbItem[] = [
         href: route('universities.show', { university: props.university.id }),
     },
     {
+        title: 'Societies',
+        href: route('universities.societies.index', { university: props.university.id }),
+    },
+    {
         title: 'Create New Society',
         href: route('universities.societies.create', { university: props.university.id }),
     },
