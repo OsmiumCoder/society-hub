@@ -22,7 +22,7 @@ class UniversitySocietyController extends Controller
         $this->authorize('viewAny', [Society::class, $university]);
 
         $societies = $university->societies()
-            ->paginate(10);
+            ->paginate(20);
 
         return Inertia::render('societies/Index', [
             'university' => $university,

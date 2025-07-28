@@ -3,6 +3,8 @@ import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle }
 import AppLayout from '@/layouts/AppLayout.vue';
 import { BreadcrumbItem, Pagination, Society, University } from '@/types';
 import { Head, Link } from '@inertiajs/vue3';
+import { Button } from '@/components/ui/button';
+import { LoaderCircle } from 'lucide-vue-next';
 
 interface Props {
     university: University;
@@ -37,6 +39,13 @@ const breadcrumbs: BreadcrumbItem[] = [
 
     <AppLayout :breadcrumbs="breadcrumbs">
         <div class="flex h-full flex-1 flex-col gap-4 rounded-xl p-4">
+            <div class="flex justify-end my-2">
+                <Button type="button">
+                    <Link :href="route('universities.societies.create', { university: props.university.id })">
+                        Create a New Society
+                    </Link>
+                </Button>
+            </div>
             <div class="grid auto-rows-min gap-4 md:grid-cols-3">
                 <div
                     v-for="society in societies.data"

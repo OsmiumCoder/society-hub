@@ -15,7 +15,7 @@ import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover
 import { Switch } from '@/components/ui/switch';
 import { DateFormatter, type DateValue, getLocalTimeZone, parseDate } from '@internationalized/date';
 import { CalendarIcon } from 'lucide-vue-next';
-import { ref } from 'vue';
+import { Ref, ref } from 'vue';
 
 interface Props {
     university: University;
@@ -46,7 +46,7 @@ const df = new DateFormatter('en-US', {
     dateStyle: 'long',
 });
 
-const foundingDate = ref<DateValue>(parseDate(form.founding_date.toString()));
+const foundingDate = ref(parseDate(form.founding_date.toString())) as Ref<DateValue>;
 
 const submit = () => {
     form.transform((data) => ({
@@ -154,7 +154,7 @@ const submit = () => {
                     <InputError :message="form.errors.category" />
                 </div>
 
-                <Button type="submit" class="mt-4" :tabindex="4" :disabled="form.processing">
+                <Button type="submit" class="mt-4" :disabled="form.processing">
                     <LoaderCircle v-if="form.processing" class="h-4 w-4 animate-spin" />
                     Save
                 </Button>
