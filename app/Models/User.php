@@ -55,6 +55,7 @@ class User extends Authenticatable
     public function societies()
     {
         return $this->belongsToMany(Society::class, 'society_members', 'user_id', 'society_id')
+            ->withPivot(['role', 'title'])
             ->using(SocietyMember::class);
     }
 }

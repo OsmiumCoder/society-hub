@@ -54,6 +54,7 @@ class Society extends Model
     public function members()
     {
         return $this->belongsToMany(User::class, 'society_member', 'society_id', 'user_id')
+            ->withPivot(['role', 'title'])
             ->using(SocietyMember::class);
     }
 

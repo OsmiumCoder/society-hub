@@ -106,3 +106,20 @@ export interface Society {
     category: string;
     tags: Array;
 }
+
+export interface SocietyMember extends User {
+    pivot: SocietyMemberPivot;
+}
+
+export enum SocietyMemberRole {
+    MEMBER = 1,
+    ADMIN = 2,
+    OWNER = 3,
+}
+
+export interface SocietyMemberPivot {
+    society_id: string;
+    user_id: number;
+    role: SocietyMemberRole,
+    title: string;
+}

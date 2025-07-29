@@ -40,8 +40,8 @@ const navItems: NavItem[] = [
     },
     {
         title: 'Members',
-        href: '',
-        isActive: false,
+        href: route('societies.society-members.index', { society: props.society.id }),
+        isActive: route().current('societies.society-members.index', { society: props.society.id }),
         can: props.can.update,
     },
     {
