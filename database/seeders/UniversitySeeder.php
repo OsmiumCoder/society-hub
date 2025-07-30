@@ -16,13 +16,13 @@ class UniversitySeeder extends Seeder
     public function run(): void
     {
         University::factory()
-            ->count(20)
+            ->count(3)
             ->has(Society::factory()
-                ->hasAttached(User::factory()->count(5), [
+                ->hasAttached(User::factory()->count(50), [
                     'role' => SocietyMemberRole::Member,
                     'title' => null
                 ], 'members')
-                ->count(10))
+                ->count(3))
             ->create();
     }
 }
