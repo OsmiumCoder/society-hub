@@ -54,7 +54,7 @@ class UniversitySocietyController extends Controller
     {
         $society = $university->societies()->create($request->validated());
 
-        $society->members()->attach(auth()->id(), ['role' => SocietyMemberRole::OWNER]);
+        $society->members()->attach(auth()->id(), ['role' => SocietyMemberRole::Owner]);
 
         return redirect()->route('universities.societies.show', [$university, $society])
             ->with('success', 'Society created successfully.');

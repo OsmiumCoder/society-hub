@@ -19,7 +19,7 @@ class UniversitySeeder extends Seeder
             ->count(20)
             ->has(Society::factory()
                 ->hasAttached(User::factory()->count(5), [
-                    'role' => SocietyMemberRole::MEMBER,
+                    'role' => SocietyMemberRole::Member,
                     'title' => null
                 ], 'members')
                 ->count(10))

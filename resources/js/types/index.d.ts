@@ -1,6 +1,7 @@
 import type { PageProps } from '@inertiajs/core';
 import type { LucideIcon } from 'lucide-vue-next';
 import type { Config } from 'ziggy-js';
+import { SocietyMemberRole } from '@/lib/utils';
 
 export interface Auth {
     user: User;
@@ -109,12 +110,6 @@ export interface Society {
 
 export interface SocietyMember extends User {
     pivot: SocietyMemberPivot;
-}
-
-export enum SocietyMemberRole {
-    MEMBER = 1,
-    ADMIN = 2,
-    OWNER = 3,
 }
 
 export interface SocietyMemberPivot {

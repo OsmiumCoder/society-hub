@@ -4,16 +4,16 @@ namespace App;
 
 enum SocietyMemberRole: int
 {
-    case MEMBER = 1;
-    case ADMIN = 2;
-    case OWNER = 3;
+    case Member = 1;
+    case Admin = 2;
+    case Owner = 3;
 
     public function label(): string
     {
         return match ($this) {
-            self::MEMBER => 'Member',
-            self::ADMIN => 'Admin',
-            self::OWNER => 'Owner',
+            self::Member => 'Member',
+            self::Admin => 'Admin',
+            self::Owner => 'Owner',
         };
     }
 

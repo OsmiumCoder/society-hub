@@ -15,8 +15,8 @@ class SocietyMemberPolicy extends BasePolicy
     public function viewAny(User $user, Society $society): bool
     {
         return $society->userHasRole($user, [
-            SocietyMemberRole::ADMIN,
-            SocietyMemberRole::OWNER,
+            SocietyMemberRole::Admin,
+            SocietyMemberRole::Owner,
         ]);
     }
 
@@ -26,8 +26,8 @@ class SocietyMemberPolicy extends BasePolicy
     public function create(User $user, Society $society): bool
     {
         return $society->userHasRole($user, [
-            SocietyMemberRole::ADMIN,
-            SocietyMemberRole::OWNER,
+            SocietyMemberRole::Admin,
+            SocietyMemberRole::Owner,
         ]);
     }
 
@@ -37,8 +37,8 @@ class SocietyMemberPolicy extends BasePolicy
     public function update(User $user, Society $society, SocietyMember $societyMember): bool
     {
         return $society->userHasRole($user, [
-            SocietyMemberRole::ADMIN,
-            SocietyMemberRole::OWNER,
+            SocietyMemberRole::Admin,
+            SocietyMemberRole::Owner,
         ]);
     }
 
@@ -48,8 +48,8 @@ class SocietyMemberPolicy extends BasePolicy
     public function delete(User $user, Society $society, SocietyMember $societyMember): bool
     {
         return $society->userHasRole($user, [
-            SocietyMemberRole::ADMIN,
-            SocietyMemberRole::OWNER,
+            SocietyMemberRole::Admin,
+            SocietyMemberRole::Owner,
         ]);
     }
 
@@ -59,8 +59,8 @@ class SocietyMemberPolicy extends BasePolicy
     public function restore(User $user, Society $society, SocietyMember $societyMember): bool
     {
         return $society->userHasRole($user, [
-            SocietyMemberRole::ADMIN,
-            SocietyMemberRole::OWNER,
+            SocietyMemberRole::Admin,
+            SocietyMemberRole::Owner,
         ]);
     }
 
@@ -70,8 +70,8 @@ class SocietyMemberPolicy extends BasePolicy
     public function forceDelete(User $user, Society $society, SocietyMember $societyMember): bool
     {
         return $society->userHasRole($user, [
-            SocietyMemberRole::ADMIN,
-            SocietyMemberRole::OWNER,
+            SocietyMemberRole::Admin,
+            SocietyMemberRole::Owner,
         ]);
     }
 }
