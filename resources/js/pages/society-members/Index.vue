@@ -27,50 +27,52 @@ defineProps<Props>();
     <Head :title="society.name" />
 
     <Layout :university="university" :society="society" :can="can">
-        <Table>
-            <TableHeader>
-                <TableRow>
-                    <TableHead class="w-[100px]">
-                        Name
-                    </TableHead>
-                    <TableHead>Email</TableHead>
-                    <TableHead>Role</TableHead>
-                    <TableHead>Title</TableHead>
-                </TableRow>
-            </TableHeader>
-            <TableBody>
-                <TableRow v-for="member in members.data" :key="member.id">
-                    <TableCell class="font-medium">
-                        {{ member.name }}
-                    </TableCell>
-                    <TableCell>{{ member.email }}</TableCell>
-                    <TableCell>{{ SocietyMemberRole[member.pivot.role] }}</TableCell>
-                    <TableCell>{{ member.pivot.role }}</TableCell>
-                </TableRow>
-            </TableBody>
-        </Table>
-        <Pagination :items-per-page="members.per_page" :total="members.total">
-            <PaginationContent>
-                <Link :href="members.prev_page_url">
-                    <PaginationPrevious class="cursor-pointer" :disabled="!members.prev_page_url"/>
-                </Link>
-
-                <template v-for="(item, index) in members.links.slice(1, members.links.length-1)" :key="index">
-                    <Link :href="item.url">
-                        <PaginationItem class="cursor-pointer"
-                            :value="index + 1"
-                            :is-active="item.active"
-                        >
-                            {{ item.label }}
-                        </PaginationItem>
+        <div class="p-6">
+            <Table>
+                <TableHeader>
+                    <TableRow>
+                        <TableHead class="w-[100px]">
+                            Name
+                        </TableHead>
+                        <TableHead>Email</TableHead>
+                        <TableHead>Role</TableHead>
+                        <TableHead>Title</TableHead>
+                    </TableRow>
+                </TableHeader>
+                <TableBody>
+                    <TableRow v-for="member in members.data" :key="member.id">
+                        <TableCell class="font-medium">
+                            {{ member.name }}
+                        </TableCell>
+                        <TableCell>{{ member.email }}</TableCell>
+                        <TableCell>{{ SocietyMemberRole[member.pivot.role] }}</TableCell>
+                        <TableCell>{{ member.pivot.role }}</TableCell>
+                    </TableRow>
+                </TableBody>
+            </Table>
+            <Pagination :items-per-page="members.per_page" :total="members.total">
+                <PaginationContent>
+                    <Link :href="members.prev_page_url">
+                        <PaginationPrevious class="cursor-pointer" :disabled="!members.prev_page_url"/>
                     </Link>
-                </template>
 
-                <Link :href="members.next_page_url">
-                    <PaginationNext class="cursor-pointer" :disabled="!members.next_page_url"/>
-                </Link>
+                    <template v-for="(item, index) in members.links.slice(1, members.links.length-1)" :key="index">
+                        <Link :href="item.url">
+                            <PaginationItem class="cursor-pointer"
+                                            :value="index + 1"
+                                            :is-active="item.active"
+                            >
+                                {{ item.label }}
+                            </PaginationItem>
+                        </Link>
+                    </template>
 
-            </PaginationContent>
-        </Pagination>
+                    <Link :href="members.next_page_url">
+                        <PaginationNext class="cursor-pointer" :disabled="!members.next_page_url"/>
+                    </Link>
+
+                </PaginationContent>
+            </Pagination>
+        </div>
     </Layout>
 </template>
