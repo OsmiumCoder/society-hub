@@ -1,20 +1,20 @@
 <script setup lang="ts">
+import { Button } from '@/components/ui/button';
+import {
+    DropdownMenu,
+    DropdownMenuContent,
+    DropdownMenuItem,
+    DropdownMenuLabel,
+    DropdownMenuSeparator,
+    DropdownMenuTrigger,
+} from '@/components/ui/dropdown-menu';
+import { Pagination, PaginationContent, PaginationItem, PaginationNext, PaginationPrevious } from '@/components/ui/pagination';
+import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
 import Layout from '@/layouts/societies/Layout.vue';
 import { SocietyMemberRole } from '@/lib/utils';
 import { Can, Pagination as PaginationType, Society, SocietyMember, University } from '@/types';
 import { Head, Link } from '@inertiajs/vue3';
-import {
-    Pagination,
-    PaginationContent,
-    PaginationItem,
-    PaginationNext,
-    PaginationPrevious,
-} from '@/components/ui/pagination'
-import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
-import { MoreHorizontal } from 'lucide-vue-next'
-import { Button } from '@/components/ui/button'
-import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuLabel, DropdownMenuSeparator, DropdownMenuTrigger } from '@/components/ui/dropdown-menu'
-
+import { MoreHorizontal } from 'lucide-vue-next';
 
 interface Props {
     university: University;
@@ -31,9 +31,7 @@ defineProps<Props>();
 
     <Layout :university="university" :society="society" :can="can">
         <div v-if="can.create" class="mt-6 mr-6 flex justify-end">
-            <Button type="button">
-                Add Society Member
-            </Button>
+            <Button type="button"> Add Society Member </Button>
         </div>
         <div class="p-6">
             <Table>
@@ -48,8 +46,7 @@ defineProps<Props>();
                     </TableRow>
                 </TableHeader>
                 <TableBody>
-                    <TableRow v-for="member in members.data"
-                              :key="member.id">
+                    <TableRow v-for="member in members.data" :key="member.id">
                         <TableCell class="font-medium">
                             {{ member.name }}
                         </TableCell>
@@ -60,9 +57,9 @@ defineProps<Props>();
                         <TableCell v-if="can.update">
                             <DropdownMenu>
                                 <DropdownMenuTrigger as-child>
-                                    <Button variant="ghost" class="w-8 h-8 p-0">
+                                    <Button variant="ghost" class="h-8 w-8 p-0">
                                         <span class="sr-only">Open menu</span>
-                                        <MoreHorizontal class="w-4 h-4" />
+                                        <MoreHorizontal class="h-4 w-4" />
                                     </Button>
                                 </DropdownMenuTrigger>
                                 <DropdownMenuContent align="end">

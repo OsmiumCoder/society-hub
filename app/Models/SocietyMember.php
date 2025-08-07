@@ -13,14 +13,14 @@ class SocietyMember extends Pivot
     use HasUuids;
 
     protected $appends = [
-        'is_expired'
+        'is_expired',
     ];
 
     protected function isExpired(): Attribute
     {
         return new Attribute(
             get: function () {
-                if (!$this->renewed_at) {
+                if (! $this->renewed_at) {
                     return true;
                 }
 
