@@ -20,6 +20,8 @@ return new class extends Migration
             $table->integer('role');
             $table->string('title')->nullable();
 
+            $table->date('renewed_at')->nullable();
+
             $table->timestamps();
         });
     }

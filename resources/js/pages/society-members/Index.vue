@@ -10,7 +10,11 @@ import {
     PaginationPrevious,
 } from '@/components/ui/pagination'
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
-import { SocietyMemberRole } from '@/lib/utils';
+import { isDateAfterToday, isDateBeforeToday, SocietyMemberRole } from '@/lib/utils';
+import { MoreHorizontal } from 'lucide-vue-next'
+import { Button } from '@/components/ui/button'
+import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuLabel, DropdownMenuSeparator, DropdownMenuTrigger } from '@/components/ui/dropdown-menu'
+
 
 interface Props {
     university: University;
@@ -27,6 +31,11 @@ defineProps<Props>();
     <Head :title="society.name" />
 
     <Layout :university="university" :society="society" :can="can">
+        <div v-if="can.create" class="mt-6 mr-6 flex justify-end">
+            <Button type="button">
+                Add Society Member
+            </Button>
+        </div>
         <div class="p-6">
             <Table>
                 <TableHeader>
@@ -37,16 +46,39 @@ defineProps<Props>();
                         <TableHead>Email</TableHead>
                         <TableHead>Role</TableHead>
                         <TableHead>Title</TableHead>
+                        <TableHead>Membership</TableHead>
+                        <TableHead v-if="can.update">Actions</TableHead>
                     </TableRow>
                 </TableHeader>
                 <TableBody>
-                    <TableRow v-for="member in members.data" :key="member.id">
+                    <TableRow v-for="member in members.data"
+                              :key="member.id">
                         <TableCell class="font-medium">
                             {{ member.name }}
                         </TableCell>
                         <TableCell>{{ member.email }}</TableCell>
                         <TableCell>{{ SocietyMemberRole[member.pivot.role] }}</TableCell>
-                        <TableCell>{{ member.pivot.role }}</TableCell>
+                        <TableCell>{{ member.pivot.title }}</TableCell>
+                        <TableCell>{{ member.pivot.is_expired ? 'Expired' : 'Active' }}</TableCell>
+                        <TableCell v-if="can.update">
+                            <DropdownMenu>
+                                <DropdownMenuTrigger as-child>
+                                    <Button variant="ghost" class="w-8 h-8 p-0">
+                                        <span class="sr-only">Open menu</span>
+                                        <MoreHorizontal class="w-4 h-4" />
+                                    </Button>
+                                </DropdownMenuTrigger>
+                                <DropdownMenuContent align="end">
+                                    <DropdownMenuLabel>Actions</DropdownMenuLabel>
+                                    <DropdownMenuItem>Change Role</DropdownMenuItem>
+                                    <DropdownMenuItem>Change Title</DropdownMenuItem>
+                                    <DropdownMenuItem></DropdownMenuItem>
+                                    <DropdownMenuSeparator />
+                                    <DropdownMenuItem>Renew Membership</DropdownMenuItem>
+                                    <DropdownMenuItem>Delete Society Member</DropdownMenuItem>
+                                </DropdownMenuContent>
+                            </DropdownMenu>
+                        </TableCell>
                     </TableRow>
                 </TableBody>
             </Table>

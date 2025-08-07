@@ -22,7 +22,8 @@ class SocietyMemberController extends Controller
             'society' => $society,
             'members' => $society->members()->paginate(20),
             'can' => [
-                'update' => auth()->user()->can('update', $society),
+                'create' => auth()->user()->can('create', [SocietyMember::class, $society]),
+                'update' => auth()->user()->can('update', [SocietyMember::class, $society]),
             ],
         ]);
     }

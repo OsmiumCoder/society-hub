@@ -117,4 +117,6 @@ export interface SocietyMemberPivot {
     user_id: number;
     role: SocietyMemberRole,
     title: string;
+    renewed_at: string;
+    is_expired: boolean;
 }
